@@ -1,14 +1,31 @@
 <template>
-  <div id="app">
-    <div id="nav">
+  <main id="app">
+    <MHeader></MHeader>
+    <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
-    </div>
+    </div> -->
     <router-view />
-  </div>
+    <MFooter />
+  </main>
 </template>
 
+<script>
+import MHeader from "@/components/MHeader";
+import MFooter from "@/components/MFooter.vue";
+
+export default {
+  components: { MHeader, MFooter }
+};
+</script>
+
 <style lang="scss">
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Helvetica, sans-serif;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
