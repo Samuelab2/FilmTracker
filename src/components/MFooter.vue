@@ -2,8 +2,8 @@
   <footer>
     <a href="#">Terminos y condiciones</a>
     <div class="contact">
-      <span>Hecho con ❤️ por Samuelab2</span>
-      <a href="https://www.twitter.com/samuelab_26"
+      <span>Hecho con ❤️ por Samuelab2 </span>
+      <a href="https://www.twitter.com/samuelab_26" target="_blank"
         >¿Trabajamos juntos?
         <img :src="require('@/assets/twitter.png')" alt="twitter" />
       </a>
@@ -19,10 +19,10 @@ export default {
 
 <style>
 footer {
-  background: white;
+  background: black;
+  color: white;
   padding: 0 10px;
   height: 70px;
-  box-shadow: 1px -4px 15px 0px lightgrey;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,17 +30,24 @@ footer {
 }
 
 footer a {
-  color: black;
+  color: white;
   text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  line-height: 30px;
 }
 
 .contact {
   display: flex;
   flex-direction: column;
   text-align: center;
+  font-weight: bold;
 }
 
 .contact img {
   width: 20px;
+  filter: invert(1);
 }
 </style>

@@ -40,7 +40,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .grid-container {
   display: grid;
   grid-template-columns: 200px calc(100% - 400px) 200px;
@@ -67,5 +67,30 @@ export default {
 
 .dontmiss {
   grid-area: dontmiss;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e4e4e4;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    97deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 </style>

@@ -1,15 +1,16 @@
 <template>
   <header class="header">
     <figure class="header__figure">
-      <img :src="require('@/assets/logo.jpg')" alt="Logo Movi.es" />
-      <h1>Movi.es</h1>
+      <router-link to="/">
+        <h1>FilmTracker</h1>
+      </router-link>
       <span @click="toggleMenu" class="HamburgerMenu">Menu</span>
     </figure>
 
     <input
       class="header__input"
       type="text"
-      placeholder="Busca tu peli, actor o director favorito"
+      placeholder="Busca tu pelicula, serie o actor favorito"
     />
     <div class="header__userinfo">
       <a href="#">Samuel Mata</a>
@@ -50,12 +51,11 @@ export default {
   display: flex;
   position: sticky;
   height: 70px;
-  box-shadow: 1px 1px 15px 0px lightgrey;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   top: 0;
-  background: linear-gradient(white 70%, rgba(255, 255, 255, 0.8));
+  background-color: black;
   z-index: 1;
 }
 
@@ -66,26 +66,36 @@ export default {
   margin: 0 40px;
 }
 
-.header__figure img {
-  width: 40px;
-}
-
 .header__figure h1 {
   font-size: 25px;
   display: inline-block;
+  color: white;
+  padding: 5px;
+  border: 2px dashed white;
 }
 
 .header .HamburgerMenu {
-  width: 50px;
-  height: 50px;
-  background-color: #797979;
-  border-radius: 50%;
-  margin: 0 10px;
+  width: 60px;
+  height: 30px;
+  margin: 0 20px;
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-weight: bold;
+  border: 1px solid white;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  background: linear-gradient(
+    97deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+}
+
+.HamburgerMenu:hover {
+  background-position: right center;
 }
 
 .header__input {
@@ -97,7 +107,7 @@ export default {
 }
 
 .header__input::placeholder {
-  color: lightgray;
+  color: black;
 }
 
 .header__userinfo {
@@ -105,15 +115,20 @@ export default {
   align-items: center;
   height: 100%;
   position: relative;
-  margin: 0 10px;
   justify-content: space-evenly;
-  transition: background 0.5s;
+  background: linear-gradient(
+    97deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  padding: 0 10px;
 }
 
 .header__userinfo a {
   text-decoration: none;
   letter-spacing: 1px;
-  color: black;
+  color: white;
   font-weight: bold;
 }
 .header__userinfo ul {
@@ -135,24 +150,37 @@ export default {
   padding: 0;
   width: 100%;
   text-align: center;
-  transition: background 2s;
+  transition: background 2s ease;
 }
 
 .header__userinfo:hover {
-  background: rgba(252, 98, 98, 0.75);
+  background: linear-gradient(
+    97deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
 }
 
 .header__userinfo:hover ul {
   display: block;
-  background: rgba(252, 98, 98, 0.75);
+  background: linear-gradient(
+    97deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
 }
 
 .avatar {
-  width: 40px;
+  width: 35px;
+  border-radius: 77px;
+  height: 40px;
   margin: 0 10px;
 }
 
 .arrow {
   width: 20px;
+  filter: invert(1);
 }
 </style>
