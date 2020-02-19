@@ -1,18 +1,20 @@
 <template>
   <div class="Movies-grid">
     <div v-for="item in movies" :key="item.id" class="movie--container">
-      <figure class="movie__image--container">
-        <img
-          :src="`https://image.tmdb.org/t/p/w500${item.poster_path}`"
-          :alt="`${item.title}`"
-        />
-      </figure>
-      <span class="movie--info">
-        <h3>{{ item.title }}</h3>
-        <p>
-          {{ item.overview }}
-        </p>
-      </span>
+      <router-link :to="{ name: 'movie-detail', params: { id: item.id } }">
+        <figure class="movie__image--container">
+          <img
+            :src="`https://image.tmdb.org/t/p/w500${item.poster_path}`"
+            :alt="`${item.title}`"
+          />
+        </figure>
+        <span class="movie--info">
+          <h3>{{ item.title }}</h3>
+          <p>
+            {{ item.overview }}
+          </p>
+        </span>
+      </router-link>
     </div>
   </div>
 </template>

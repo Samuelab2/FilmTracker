@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <figure class="header__figure">
-      <router-link to="/">
+      <router-link :to="{ name: 'Home' }">
         <h1>FilmTracker</h1>
       </router-link>
       <span @click="toggleMenu" class="HamburgerMenu">Menu</span>

@@ -2,15 +2,21 @@
   <div class="grid-container">
     <section class="inMovies">
       <h2>Now Playing</h2>
-      <MovieContainer :movies="nowPlaying" />
+      <HashLoader class="spinners" :loading="loadingNowPlaying" :size="50" />
+      <MovieContainer v-if="loadingNowPlaying === false" :movies="nowPlaying" />
     </section>
     <section class="liked">
       <h2>Most Popular</h2>
-      <MovieContainer :movies="mostPopular" />
+      <HashLoader class="spinners" :loading="loadingMostPopular" :size="50" />
+      <MovieContainer
+        v-if="loadingMostPopular === false"
+        :movies="mostPopular"
+      />
     </section>
     <section class="dontmiss">
       <h2>Top Rated</h2>
-      <MovieContainer :movies="topRated" />
+      <HashLoader class="spinners" :loading="loadingTopRated" :size="50" />
+      <MovieContainer v-if="loadingTopRated === false" :movies="topRated" />
     </section>
   </div>
 </template>
@@ -29,13 +35,28 @@ export default {
     return {
       nowPlaying: [],
       mostPopular: [],
-      topRated: []
+      topRated: [],
+      loadingNowPlaying: false,
+      loadingMostPopular: false,
+      loadingTopRated: false
     };
   },
   created() {
-    api.getNowPlaying().then(nowPlaying => (this.nowPlaying = nowPlaying));
-    api.getMostPopular().then(mostPopular => (this.mostPopular = mostPopular));
-    api.getTopRated().then(topRated => (this.topRated = topRated));
+    this.loadingNowPlaying = true;
+    this.loadingMostPopular = true;
+    this.loadingTopRated = true;
+    api
+      .getNowPlaying()
+      .then(nowPlaying => (this.nowPlaying = nowPlaying))
+      .finally(() => (this.loadingNowPlaying = false));
+    api
+      .getMostPopular()
+      .then(mostPopular => (this.mostPopular = mostPopular))
+      .finally(() => (this.loadingMostPopular = false));
+    api
+      .getTopRated()
+      .then(topRated => (this.topRated = topRated))
+      .finally(() => (this.loadingTopRated = false));
   }
 };
 </script>
@@ -59,14 +80,20 @@ export default {
 
 .inMovies {
   grid-area: inMovie;
+  display: grid;
+  grid-template-rows: min-content;
 }
 
 .liked {
   grid-area: liked;
+  display: grid;
+  grid-template-rows: min-content;
 }
 
 .dontmiss {
   grid-area: dontmiss;
+  display: grid;
+  grid-template-rows: min-content;
 }
 /* width */
 ::-webkit-scrollbar {
@@ -92,5 +119,10 @@ export default {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+.spinners {
+  margin: 0 auto;
+  justify-self: center;
+  align-self: center;
 }
 </style>
