@@ -64,7 +64,7 @@ export default {
 <style scoped>
 .grid-container {
   display: grid;
-  grid-template-columns: 200px calc(100% - 400px) 200px;
+  grid-template-columns: 10vw 80vw 10vw;
   grid-template-rows: repeat(3, minmax(min-content, 265px));
   grid-template-areas:
     ". inMovie ."
@@ -75,7 +75,7 @@ export default {
 
 .grid-container h2 {
   margin: 10px;
-  font-size: 35px;
+  font-size: 2em;
 }
 
 .inMovies {

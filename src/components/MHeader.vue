@@ -63,7 +63,7 @@ export default {
   display: flex;
   height: 50px;
   align-items: center;
-  margin: 0 40px;
+  margin: 0 0.5em;
 }
 
 .header__figure h1 {
@@ -77,7 +77,7 @@ export default {
 .header .HamburgerMenu {
   width: 60px;
   height: 30px;
-  margin: 0 20px;
+  margin-left: 1em;
   color: white;
   font-weight: bold;
   border: 1px solid white;
@@ -99,7 +99,7 @@ export default {
 }
 
 .header__input {
-  width: 50%;
+  width: 40%;
   padding: 10px;
   border-radius: 10px;
   border: 1px solid lightgray;
@@ -122,7 +122,7 @@ export default {
     rgba(253, 29, 29, 1) 50%,
     rgba(252, 176, 69, 1) 100%
   );
-  padding: 0 10px;
+  padding: 0 0.3em;
 }
 
 .header__userinfo a {

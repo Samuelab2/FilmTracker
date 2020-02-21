@@ -118,8 +118,10 @@ export default {
 <style scoped>
 .movie-details__container {
   display: grid;
-  grid-template-columns: repeat(4, calc(100vw / 4));
+  grid-template-columns: 10vw 40vw 40vw 10vw;
   grid-template-rows: repeat(4, min-content);
+  grid-gap: 1em;
+  margin-top: 1em;
   grid-template-areas:
     ". poster details ."
     ". cast cast ."
@@ -129,11 +131,13 @@ export default {
 
 .movie-details__image-container {
   grid-area: poster;
+  margin: 0;
 }
 
 .movie-details__image-container img {
   border: 5px solid black;
-  height: 600px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .movie-details__info {
@@ -145,9 +149,9 @@ export default {
 .movie-details__info h1 {
   width: 100%;
   align-self: center;
-  font-size: 36px;
+  font-size: 2em;
   border-radius: 10px;
-  margin: 1rem;
+  margin: 0.3em;
 }
 
 .movie-details__info ul {
@@ -171,20 +175,20 @@ export default {
 
 .movie-details__info ul li {
   font-weight: bold;
-  font-size: 26px;
+  font-size: 1.2em;
   text-align: justify;
   line-height: 35px;
 }
 
 .movie-details__info ul li span {
   font-weight: normal;
-  font-size: 20px;
+  font-size: 0.9em;
 }
 
 .movie-details__info p {
-  line-height: 30px;
+  line-height: 1.5em;
   text-align: justify;
-  font-size: 18px;
+  font-size: 1.1em;
 }
 
 .movie-cast-list {

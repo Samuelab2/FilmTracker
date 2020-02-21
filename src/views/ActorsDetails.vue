@@ -64,7 +64,7 @@ export default {
 <style scoped>
 .actors-details__container {
   display: grid;
-  grid-template-columns: repeat(4, calc(100vw / 4));
+  grid-template-columns: 10vw 40vw 40vw 10vw;
   grid-template-rows: 50px min-content 50px;
   grid-gap: 10px;
   grid-template-areas:
@@ -94,8 +94,7 @@ export default {
 .actors-details__info h1 {
   width: 100%;
   align-self: center;
-  font-size: 36px;
-  border-radius: 10px;
+  font-size: 2em;
   margin: 1rem;
 }
 
@@ -124,19 +123,21 @@ export default {
 
 .actors-details__info ul li {
   font-weight: bold;
-  font-size: 22px;
+  font-size: 1.2em;
   text-align: justify;
   line-height: 35px;
 }
 
 .actors-details__info ul li span {
   font-weight: normal;
-  font-size: 20px;
+  font-size: 1em;
 }
 
 .actors-details__info p {
-  line-height: 25px;
+  line-height: 1.4em;
   text-align: justify;
-  font-size: 18px;
+  font-size: 1em;
+  overflow: scroll;
+  height: 20em;
 }
 </style>

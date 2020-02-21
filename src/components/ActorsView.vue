@@ -49,6 +49,11 @@ export default {
   transition: box-shadow 0.3s;
 }
 
+.actors--container a {
+  text-decoration: none;
+  color: black;
+}
+
 .actors__image--container img:hover {
   /* border: 5px solid lightgray; */
   box-shadow: 0px 0px 19px 4px grey;
