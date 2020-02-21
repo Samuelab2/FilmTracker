@@ -64,19 +64,13 @@ export default {
 <style scoped>
 .actors-details__container {
   display: grid;
-  grid-template-columns: 10vw 40vw 40vw 10vw;
-  grid-template-rows: 50px min-content 50px;
+  grid-template-columns: 15vw 35vw 35vw 15vw;
   grid-gap: 10px;
-  grid-template-areas:
-    ". . . ."
-    ". poster details ."
-    ". . . .";
+  grid-template-areas: ". poster details .";
 }
 
 .actors-details__image-container {
   grid-area: poster;
-  margin: 0;
-  align-self: center;
 }
 
 .actors-details__image-container img {
@@ -138,6 +132,6 @@ export default {
   text-align: justify;
   font-size: 1em;
   overflow: scroll;
-  height: 20em;
+  max-height: 20em;
 }
 </style>

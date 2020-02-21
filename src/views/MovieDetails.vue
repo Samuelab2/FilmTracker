@@ -118,7 +118,7 @@ export default {
 <style scoped>
 .movie-details__container {
   display: grid;
-  grid-template-columns: 10vw 40vw 40vw 10vw;
+  grid-template-columns: 15vw 35vw 35vw 15vw;
   grid-template-rows: repeat(4, min-content);
   grid-gap: 1em;
   margin-top: 1em;
@@ -131,7 +131,6 @@ export default {
 
 .movie-details__image-container {
   grid-area: poster;
-  margin: 0;
 }
 
 .movie-details__image-container img {
