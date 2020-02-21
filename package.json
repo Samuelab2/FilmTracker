@@ -27,5 +27,20 @@
     "sass": "^1.25.0",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "description": "<h1 align=\"center\">Welcome to FilmTrack 👋</h1> <p>   <img alt=\"Version\" src=\"https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000\" />   <a href=\"#\" target=\"_blank\">     <img alt=\"License: MIT\" src=\"https://img.shields.io/badge/License-MIT-yellow.svg\" />   </a>   <a href=\"https://twitter.com/samuel\\/\\_26\" target=\"_blank\">     <img alt=\"Twitter: samuel\\/\\_26\" src=\"https://img.shields.io/twitter/follow/samuel\\/\\_26.svg?style=social\" />   </a> </p>",
+  "main": "/dist/index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Samuelab2/FilmTracker.git"
+  },
+  "keywords": [
+    "Vue.js"
+  ],
+  "author": "Samuel Mata <samuelab2@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Samuelab2/FilmTracker/issues"
+  },
+  "homepage": "https://github.com/Samuelab2/FilmTracker#readme"
 }
