@@ -17,8 +17,8 @@
       <img class="avatar" :src="require('@/assets/avatar.jpg')" alt="avatar" />
       <img class="arrow" :src="require('@/assets/arrow.png')" alt="arrow" />
       <ul>
-        <li><a href="/">Cuenta</a></li>
-        <li><a href="/">Cerrar Sessión</a></li>
+        <li><a href="#">Cuenta</a></li>
+        <li><a href="#">Cerrar Sessión</a></li>
       </ul>
     </div>
     <Menu @close="toggleMenu" v-show="isOpen" />
