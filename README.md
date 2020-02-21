@@ -8,14 +8,14 @@
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
   </a>
   <a href="https://github.com/Samuelab2/FilmTracker/blob/master/LICENSE" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/github/license/Samuelab2/filmtrack" />
+    <img alt="License: MIT" src="https://img.shields.io/github/license/Samuelab2/FilmTrack" />
   </a>
   <a href="https://twitter.com/Samuelab\_26" target="_blank">
     <img alt="Twitter: Samuelab_26" src="https://img.shields.io/twitter/follow/Samuelab_26.svg?style=social" />
   </a>
 </p>
 
-> <h1 align=&#34;center&#34;>Welcome to FilmTrack 👋</h1> <p>   <img alt=&#34;Version&#34; src=&#34;https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000&#34; />   <a href=&#34;#&#34; target=&#34;_blank&#34;>     <img alt=&#34;License: MIT&#34; src=&#34;https://img.shields.io/badge/License-MIT-yellow.svg&#34; />   </a>   <a href=&#34;https://twitter.com/samuel\/\_26&#34; target=&#34;_blank&#34;>     <img alt=&#34;Twitter: samuel\/\_26&#34; src=&#34;https://img.shields.io/twitter/follow/samuel\/\_26.svg?style=social&#34; />   </a> </p>
+> Keep up to date and know everything about your favorites movies and TV Shows
 
 ### 🏠 [Homepage](https://github.com/Samuelab2/FilmTracker#readme)
 
@@ -32,16 +32,17 @@ npm install
 ```sh
 npm run serve
 ```
-## to do list
 
-📌 Create search bar component
-📌 create fake login screen
-📌 introduce a "read more" botton when movie description gets too long
-📌 add a details screen to the TV shows
-📌 loading pages when the request is being made
-📌 add fallback values to when there is no data from the API
-📌 a better footer, with thanks to the API provider
-📌 variables in css3 to better manage the layout
+## To do list
+
+* 📌 Create search bar component
+* 📌 introduce a "read more" botton when movie description gets too long
+* 📌 add a details screen to the TV shows
+* 📌 loading pages when the request is being made
+* 📌 create fake login screen
+* 📌 add fallback values to when there is no data from the API
+* 📌 a better footer, with thanks to the API provider
+* 📌 variables in css3 to better manage the layout
 
 ## Author
 
