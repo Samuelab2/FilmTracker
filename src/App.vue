@@ -1,10 +1,6 @@
 <template>
   <main id="app">
     <MHeader></MHeader>
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
     <router-view />
     <MFooter />
   </main>
@@ -12,7 +8,7 @@
 
 <script>
 import MHeader from "@/components/MHeader";
-import MFooter from "@/components/MFooter.vue";
+import MFooter from "@/components/MFooter";
 
 export default {
   components: { MHeader, MFooter }
@@ -31,21 +27,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 ::-webkit-scrollbar {
   width: 10px;
 }

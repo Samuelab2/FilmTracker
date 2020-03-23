@@ -44,7 +44,6 @@
       <h3>More like this</h3>
       <div>
         <MovieContainer :movies="similarMovies" />
-
       </div>
     </div>
     <div class="movie-reviews">
