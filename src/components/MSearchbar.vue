@@ -92,6 +92,7 @@ export default {
   padding: 0;
   border-bottom-right-radius: 20px;
   border-bottom-left-radius: 20px;
+  box-shadow: 0px 9px 20px 1px black;
 }
 
 .searchbar__results--item {

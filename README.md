@@ -35,22 +35,22 @@ npm run serve
 
 ## To do list
 
-* 📌 Create search bar component
-* 📌 introduce a "read more" botton when movie description gets too long
-* 📌 add a details screen to the TV shows
-* 📌 loading pages when the request is being made
-* 📌 create fake login screen
-* 📌 add fallback values to when there is no data from the API
-* 📌 a better footer, with thanks to the API provider
-* 📌 variables in css3 to better manage the layout
+- ~~📌 Create search bar component~~
+- 📌 introduce a "read more" botton when movie description gets too long
+- 📌 add a details screen to the TV shows
+- 📌 loading pages when the request is being made
+- 📌 create fake login screen
+- 📌 add fallback values to when there is no data from the API
+- 📌 a better footer, with thanks to the API provider
+- 📌 variables in css3 to better manage the layout
 
 ## Author
 
 👤 **Samuel Mata <samuelab2@gmail.com>**
 
-* Twitter: [@Samuelab_26](https://twitter.com/Samuelab_26)
-* Github: [@Samuelab2](https://github.com/Samuelab2)
-* LinkedIn: [@Samuelab2](https://linkedin.com/in/Samuelab2)
+- Twitter: [@Samuelab_26](https://twitter.com/Samuelab_26)
+- Github: [@Samuelab2](https://github.com/Samuelab2)
+- LinkedIn: [@Samuelab2](https://linkedin.com/in/Samuelab2)
 
 ## 🤝 Contributing
 
@@ -65,5 +65,6 @@ Give a ⭐️ if this project helped you!
 Copyright © 2020 [Samuel Mata <samuelab2@gmail.com>](https://github.com/Samuelab2).<br />
 This project is [MIT](https://github.com/Samuelab2/FilmTracker/blob/master/LICENSE) licensed.
 
-***
+---
+
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_

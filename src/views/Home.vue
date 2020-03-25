@@ -80,20 +80,14 @@ export default {
 
 .inMovies {
   grid-area: inMovie;
-  display: grid;
-  grid-template-rows: min-content;
 }
 
 .liked {
   grid-area: liked;
-  display: grid;
-  grid-template-rows: min-content;
 }
 
 .dontmiss {
   grid-area: dontmiss;
-  display: grid;
-  grid-template-rows: min-content;
 }
 
 .spinners {

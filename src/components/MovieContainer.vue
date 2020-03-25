@@ -1,21 +1,25 @@
 <template>
-  <div class="Movies-grid">
-    <div v-for="item in movies" :key="item.id" class="movie--container">
-      <router-link :to="{ name: 'movie-detail', params: { id: item.id } }">
-        <figure class="movie__image--container">
-          <img
-            :src="`https://image.tmdb.org/t/p/w500${item.poster_path}`"
-            :alt="`${item.title}`"
-          />
-        </figure>
-        <span class="movie--info">
-          <h3>{{ item.title }}</h3>
-          <p>
-            {{ item.overview }}
-          </p>
-        </span>
-      </router-link>
+  <div class="section__carrousel-container">
+    <button class="section__btnCorrousel" @click="moveLeft">PREV</button>
+    <div class="Movies-grid" ref="carrousel">
+      <div v-for="item in movies" :key="item.id" class="movie--container">
+        <router-link :to="{ name: 'movie-detail', params: { id: item.id } }">
+          <figure class="movie__image--container">
+            <img
+              :src="`https://image.tmdb.org/t/p/w500${item.poster_path}`"
+              :alt="`${item.title}`"
+            />
+          </figure>
+          <span class="movie--info">
+            <h3>{{ item.title }}</h3>
+            <p>
+              {{ item.overview }}
+            </p>
+          </span>
+        </router-link>
+      </div>
     </div>
+    <button class="section__btnCorrousel" @click="moveRight">NEXT</button>
   </div>
 </template>
 
@@ -27,25 +31,69 @@ export default {
       type: Array,
       default: () => []
     }
+  },
+  data() {
+    return {
+      container: []
+    };
+  },
+  methods: {
+    moveRight() {
+      console.log(
+        this.$refs.carrousel.scrollBy({
+          left: 1500,
+          behavior: "smooth"
+        })
+      );
+    },
+    moveLeft() {
+      console.log(
+        this.$refs.carrousel.scrollBy({
+          left: -1500,
+          behavior: "smooth"
+        })
+      );
+    }
   }
 };
 </script>
 
 <style scoped>
+.section__carrousel-container {
+  display: flex;
+  align-items: center;
+}
+.section__btnCorrousel {
+  width: 100px;
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid white;
+  color: white;
+  font-weight: bold;
+  margin: 0 20px;
+  outline-color: transparent;
+  background: linear-gradient(
+    97deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+}
+
 .Movies-grid {
   justify-items: center;
   display: grid;
-  overflow-x: auto;
+  overflow-x: hidden;
   grid-auto-flow: column;
   padding: 20px 0;
-  gap: 25px;
+  gap: 15px;
 }
 
-.Movies-grid::after,
+/* .Movies-grid::after,
 .Movies-grid::before {
   content: "";
   width: 10px;
-}
+} */
 
 .movie--container {
   width: 330px;
