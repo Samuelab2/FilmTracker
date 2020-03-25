@@ -7,11 +7,8 @@
       <span @click="toggleMenu" class="HamburgerMenu">Menu</span>
     </figure>
 
-    <input
-      class="header__input"
-      type="text"
-      placeholder="Busca tu pelicula, serie o actor favorito"
-    />
+    <MSearchbar></MSearchbar>
+
     <div class="header__userinfo">
       <a href="#">Samuel Mata</a>
       <img class="avatar" :src="require('@/assets/avatar.jpg')" alt="avatar" />
@@ -27,11 +24,13 @@
 
 <script>
 import Menu from "@/components/Menu.vue";
+import MSearchbar from "@/components/MSearchbar.vue";
 
 export default {
   name: "MHeader",
   components: {
-    Menu
+    Menu,
+    MSearchbar
   },
   data() {
     return {
@@ -96,18 +95,6 @@ export default {
 
 .HamburgerMenu:hover {
   background-position: right center;
-}
-
-.header__input {
-  width: 40%;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid lightgray;
-  outline: transparent;
-}
-
-.header__input::placeholder {
-  color: black;
 }
 
 .header__userinfo {

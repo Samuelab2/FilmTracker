@@ -2,10 +2,8 @@
   <footer>
     <a href="#">Terminos y condiciones</a>
     <div class="contact">
-      <span>Hecho con ❤️ por Samuelab2 </span>
-      <a href="https://www.twitter.com/samuelab_26" target="_blank"
-        >¿Trabajamos juntos?
-        <img :src="require('@/assets/twitter.png')" alt="twitter" />
+      <a href="https://www.twitter.com/samuelab_26" target="_blank">
+        Hecho con ❤️ por Samuelab2
       </a>
     </div>
   </footer>
@@ -44,10 +42,5 @@ footer a {
   flex-direction: column;
   text-align: center;
   font-weight: bold;
-}
-
-.contact img {
-  width: 20px;
-  filter: invert(1);
 }
 </style>

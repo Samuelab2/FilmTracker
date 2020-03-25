@@ -46,7 +46,13 @@ function getReviews(id) {
 function getActorDetails(id) {
   return fetch(`${url}/person/${id}?${APIkey}&language=en-US`)
     .then(response => response.json())
-    .then(data => data)
+    .then(data => data);
+}
+
+function search(val) {
+  return fetch(`${url}/search/movie?${APIkey}&query=${val}`)
+    .then(response => response.json())
+    .then(data => data);
 }
 
 export default {
@@ -57,5 +63,6 @@ export default {
   getCredits,
   getSimilarMovies,
   getReviews,
-  getActorDetails
-}
+  getActorDetails,
+  search
+};
