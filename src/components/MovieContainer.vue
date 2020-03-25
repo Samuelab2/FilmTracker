@@ -2,7 +2,12 @@
   <div class="section__carrousel-container">
     <button class="section__btnCorrousel" @click="moveLeft">PREV</button>
     <div class="Movies-grid" ref="carrousel">
-      <div v-for="item in movies" :key="item.id" class="movie--container">
+      <div
+        v-for="item in movies"
+        :key="item.id"
+        class="movie--container"
+        ref="carrouselItem"
+      >
         <router-link :to="{ name: 'movie-detail', params: { id: item.id } }">
           <figure class="movie__image--container">
             <img
@@ -19,51 +24,81 @@
         </router-link>
       </div>
     </div>
-    <button class="section__btnCorrousel" @click="moveRight">NEXT</button>
+    <button class="section__btnCorrousel" @click="moveRight">
+      NEXT
+    </button>
   </div>
 </template>
 
 <script>
 export default {
   name: "MovieContainer",
+
   props: {
     movies: {
       type: Array,
       default: () => []
     }
   },
+
   data() {
     return {
       container: []
     };
   },
+
+  mounted() {
+    if (this.movies) {
+      this.intersection();
+    }
+  },
+
   methods: {
     moveRight() {
-      console.log(
-        this.$refs.carrousel.scrollBy({
-          left: 1500,
-          behavior: "smooth"
-        })
-      );
+      const carrouselScreenWidth = this.$refs.carrousel.clientWidth;
+      this.$refs.carrousel.scrollBy({
+        left: carrouselScreenWidth,
+        behavior: "smooth"
+      });
     },
     moveLeft() {
-      console.log(
-        this.$refs.carrousel.scrollBy({
-          left: -1500,
-          behavior: "smooth"
-        })
-      );
+      const carrouselScreenWidth = this.$refs.carrousel.clientWidth;
+      this.$refs.carrousel.scrollBy({
+        left: -carrouselScreenWidth,
+        behavior: "smooth"
+      });
+    },
+    intersection() {
+      const items = this.$refs.carrouselItem;
+      const observer = new IntersectionObserver(handleIntersection, {
+        threshold: 0.2
+      });
+
+      function handleIntersection(entries) {
+        entries.map(item => {
+          if (item.isIntersecting) {
+            item.target.classList.add("is-visible");
+            console.log(item);
+          } else {
+            item.target.classList.remove("is-visible");
+          }
+        });
+      }
+      items.map(value => {
+        observer.observe(value);
+      });
     }
   }
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .section__carrousel-container {
   display: flex;
   align-items: center;
 }
 .section__btnCorrousel {
+  cursor: pointer;
   width: 100px;
   height: 50px;
   border-radius: 10px;
@@ -86,88 +121,67 @@ export default {
   overflow-x: hidden;
   grid-auto-flow: column;
   padding: 20px 0;
-  gap: 15px;
+  // gap: 15px;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
 }
-
-/* .Movies-grid::after,
-.Movies-grid::before {
-  content: "";
-  width: 10px;
-} */
 
 .movie--container {
   width: 330px;
   height: 480px;
   position: relative;
-  box-shadow: 0px 0px 8px 0px;
-  transition: box-shadow 0.3s;
-}
-
-.movie--container:hover {
-  /* border: 5px solid lightgray; */
-  box-shadow: 0px 0px 19px 4px grey;
   cursor: pointer;
+  margin-right: 10px;
+  scroll-snap-align: start;
+  opacity: 0;
+  transition: ease 1s;
 }
 
 .movie__image--container {
   margin: 0;
   width: 100%;
   height: 100%;
-}
-
-.movie__image--container img {
-  width: 100%;
-  height: 100%;
+  & img {
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .movie--info {
   display: flex;
   position: absolute;
   bottom: 0;
-  background: rgba(68, 68, 68, 0.75);
+  background: rgba(0, 0, 0, 0.88);
   color: white;
   width: 100%;
+  height: 100%;
   margin: 0;
   flex-direction: column;
-  justify-content: flex-end;
-}
-
-.movie--info p {
-  margin: 5px 5px;
-  padding: 15px;
-  text-align: justify;
-  line-height: 20px;
-}
-
-.movie--info h3 {
-  font-weight: bold;
-  margin: 5px 5px;
-  font-size: 25px;
-}
-
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #e4e4e4;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    97deg,
-    rgba(131, 58, 180, 1) 0%,
-    rgba(253, 29, 29, 1) 50%,
-    rgba(252, 176, 69, 1) 100%
-  );
+  justify-content: flex-start;
+  opacity: 0;
+  padding: 10px;
+  box-sizing: border-box;
   border-radius: 10px;
+  & p {
+    margin: 5px 5px;
+    padding: 15px;
+    text-align: justify;
+    line-height: 20px;
+  }
+
+  & h3 {
+    font-weight: bold;
+    margin: 5px 5px;
+    font-size: 25px;
+  }
+  &:hover {
+    transition: 0.3s ease;
+    opacity: 1;
+  }
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+.is-visible {
+  opacity: 1;
 }
 </style>

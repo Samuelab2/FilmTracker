@@ -40,7 +40,7 @@
       <h3>Actors</h3>
       <ActorsView :actors="cast" />
     </div>
-    <div class="movie-related">
+    <div class="movie-related" v-if="similarMovies">
       <h3>More like this</h3>
       <div>
         <MovieContainer :movies="similarMovies" />
