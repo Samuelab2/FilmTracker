@@ -58,7 +58,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .grid-container {
   display: grid;
   grid-template-columns: 10vw 80vw 10vw;
@@ -92,5 +92,16 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  // .grid-container {
+  //   grid-template-columns: 100vw;
+  //   grid-template-areas:
+  //     "inMovie"
+  //     "liked"
+  //     "dontmiss";
+  //   margin-top: 15px;
+  // }
 }
 </style>

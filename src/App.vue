@@ -28,16 +28,4 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #555;
-  border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: black;
-}
 </style>

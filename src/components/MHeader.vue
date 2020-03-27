@@ -4,7 +4,7 @@
       <router-link :to="{ name: 'Home' }">
         <h1>FilmTracker</h1>
       </router-link>
-      <span @click="toggleMenu" class="HamburgerMenu">Menu</span>
+      <span @click="toggleMenu" class="header-menu">Menu</span>
     </figure>
 
     <MSearchbar></MSearchbar>
@@ -17,6 +17,11 @@
         <li><a href="#">Cuenta</a></li>
         <li><a href="#">Cerrar Sessión</a></li>
       </ul>
+    </div>
+    <div class="hamburgerMenu">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
     </div>
     <Menu @close="toggleMenu" v-show="isOpen" />
   </header>
@@ -45,7 +50,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .header {
   display: flex;
   position: sticky;
@@ -73,7 +78,7 @@ export default {
   border: 2px dashed white;
 }
 
-.header .HamburgerMenu {
+.header-menu {
   width: 60px;
   height: 30px;
   margin-left: 1em;
@@ -93,7 +98,7 @@ export default {
   );
 }
 
-.HamburgerMenu:hover {
+.header-menu:hover {
   background-position: right center;
 }
 
@@ -169,5 +174,40 @@ export default {
 .arrow {
   width: 20px;
   filter: invert(1);
+}
+.hamburgerMenu {
+  height: 45px;
+  width: 50px;
+  margin-right: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 2px dashed white;
+  cursor: pointer;
+  display: none;
+}
+
+.line {
+  background-color: white;
+  height: 5px;
+  width: 35px;
+  border-radius: 10px;
+  margin-top: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+  .header-menu {
+    display: none;
+  }
+  .header__inputContainer {
+    display: none;
+  }
+  .header__userinfo {
+    display: none;
+  }
+  .hamburgerMenu {
+    display: flex;
+  }
 }
 </style>

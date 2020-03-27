@@ -43,4 +43,11 @@ footer a {
   text-align: center;
   font-weight: bold;
 }
+
+@media only screen and (max-width: 600px) {
+  footer {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
 </style>

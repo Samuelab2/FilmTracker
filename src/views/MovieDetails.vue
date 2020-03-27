@@ -212,4 +212,21 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
+@media only screen and (max-width: 600px) {
+  .movie-details__container {
+    grid-template-columns: 5vw 45vw 45vw 5vw;
+    grid-gap: 0.5em;
+  }
+  .movie-details__image-container {
+    margin: 0;
+    padding: 0;
+  }
+
+  .movie-details__image-container img {
+    border: 1px solid black;
+    width: 100%;
+    /* height: 100%; */
+  }
+}
 </style>

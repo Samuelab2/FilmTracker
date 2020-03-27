@@ -179,4 +179,19 @@ export default {
 .is-visible {
   opacity: 1;
 }
+
+@media only screen and (max-width: 600px) {
+  .section__btnCorrousel {
+    display: none;
+  }
+
+  .Movies-grid {
+    overflow-x: auto;
+  }
+
+  .movie--container {
+    width: 240px;
+    height: 320px;
+  }
+}
 </style>

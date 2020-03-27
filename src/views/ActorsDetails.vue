@@ -83,6 +83,7 @@ export default {
   grid-area: details;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 .actors-details__info h1 {
@@ -133,5 +134,20 @@ export default {
   font-size: 1em;
   overflow: scroll;
   max-height: 20em;
+}
+
+@media only screen and (max-width: 600px) {
+  .actors-details__container {
+    grid-template-columns: 2vw 48vw 48vw 2vw;
+    grid-gap: 0;
+  }
+  .actors-details__image-container {
+    margin: 10px 0;
+    padding: 20px;
+  }
+  .actors-details__image-container img {
+    border: 1px solid black;
+    box-sizing: border-box;
+  }
 }
 </style>
