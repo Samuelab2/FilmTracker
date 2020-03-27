@@ -41,16 +41,8 @@ export default {
     }
   },
 
-  data() {
-    return {
-      container: []
-    };
-  },
-
   mounted() {
-    if (this.movies) {
-      this.intersection();
-    }
+    this.intersection();
   },
 
   methods: {
@@ -74,19 +66,21 @@ export default {
         threshold: 0.2
       });
 
-      function handleIntersection(entries) {
+      function handleIntersection(entries, observer) {
         entries.map(item => {
           if (item.isIntersecting) {
             item.target.classList.add("is-visible");
-            console.log(item);
+            observer.unobserve(item.target);
           } else {
             item.target.classList.remove("is-visible");
           }
         });
       }
-      items.map(value => {
-        observer.observe(value);
-      });
+      if (items) {
+        return items.map(value => {
+          observer.observe(value);
+        });
+      }
     }
   }
 };
@@ -163,6 +157,7 @@ export default {
   padding: 10px;
   box-sizing: border-box;
   border-radius: 10px;
+  transition: 0.4s ease;
   & p {
     margin: 5px 5px;
     padding: 15px;

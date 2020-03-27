@@ -2,21 +2,18 @@
   <div class="grid-container">
     <section class="inMovies">
       <h2>Now Playing</h2>
-      <HashLoader class="spinners" :loading="loadingNowPlaying" :size="50" />
-      <MovieContainer v-if="loadingNowPlaying === false" :movies="nowPlaying" />
+      <SyncLoader class="spinners" :loading="isLoading" :size="20" />
+      <MovieContainer v-if="isLoading === false" :movies="nowPlaying" />
     </section>
     <section class="liked">
       <h2>Most Popular</h2>
-      <HashLoader class="spinners" :loading="loadingMostPopular" :size="50" />
-      <MovieContainer
-        v-if="loadingMostPopular === false"
-        :movies="mostPopular"
-      />
+      <SyncLoader class="spinners" :loading="isLoading" :size="20" />
+      <MovieContainer v-if="isLoading === false" :movies="mostPopular" />
     </section>
     <section class="dontmiss">
       <h2>Top Rated</h2>
-      <HashLoader class="spinners" :loading="loadingTopRated" :size="50" />
-      <MovieContainer v-if="loadingTopRated === false" :movies="topRated" />
+      <SyncLoader class="spinners" :loading="isLoading" :size="20" />
+      <MovieContainer v-if="isLoading === false" :movies="topRated" />
     </section>
   </div>
 </template>
@@ -36,27 +33,27 @@ export default {
       nowPlaying: [],
       mostPopular: [],
       topRated: [],
-      loadingNowPlaying: false,
-      loadingMostPopular: false,
-      loadingTopRated: false
+      isLoading: false
     };
   },
   created() {
-    this.loadingNowPlaying = true;
-    this.loadingMostPopular = true;
-    this.loadingTopRated = true;
-    api
-      .getNowPlaying()
-      .then(nowPlaying => (this.nowPlaying = nowPlaying))
-      .finally(() => (this.loadingNowPlaying = false));
-    api
-      .getMostPopular()
-      .then(mostPopular => (this.mostPopular = mostPopular))
-      .finally(() => (this.loadingMostPopular = false));
-    api
-      .getTopRated()
-      .then(topRated => (this.topRated = topRated))
-      .finally(() => (this.loadingTopRated = false));
+    this.fetchData();
+  },
+  methods: {
+    fetchData() {
+      this.isLoading = true;
+      Promise.all([
+        api.getNowPlaying(),
+        api.getMostPopular(),
+        api.getTopRated()
+      ])
+        .then(([nowPlaying, mostPopular, topRated]) => {
+          this.nowPlaying = nowPlaying;
+          this.mostPopular = mostPopular;
+          this.topRated = topRated;
+        })
+        .finally(() => (this.isLoading = false));
+    }
   }
 };
 </script>
@@ -91,8 +88,9 @@ export default {
 }
 
 .spinners {
-  margin: 0 auto;
-  justify-self: center;
-  align-self: center;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

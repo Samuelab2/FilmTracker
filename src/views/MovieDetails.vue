@@ -1,56 +1,57 @@
 <template>
-  <div class="movie-details__container">
-    <figure class="movie-details__image-container">
-      <img
-        :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
-        alt=""
-      />
-    </figure>
-    <div class="movie-details__info">
-      <h1>{{ movie.title }}</h1>
-      <hr />
-      <ul>
-        <li>
-          Release date:
-          <span>{{ movie.release_date }}</span>
-        </li>
-        <li>
-          Average rating:
-          <span> {{ movie.vote_average }}</span>
-        </li>
-        <li>
-          Genres:
-          <span v-for="i in movie.genres" :key="i.id">{{ i.name }} </span>
-        </li>
-        <li>
-          Original language:
-          <span>{{ movie.original_language }}</span>
-        </li>
-        <li>
-          Duration:
-          <span> {{ movie.runtime }} min</span>
-        </li>
-      </ul>
-      <hr />
-      <p>
-        {{ movie.overview }}
-      </p>
-    </div>
-    <div class="movie-cast-list">
-      <h3>Actors</h3>
-      <ActorsView :actors="cast" />
-    </div>
-    <div class="movie-related" v-if="similarMovies">
-      <h3>More like this</h3>
-      <div>
+  <div class="container">
+    <SyncLoader class="spinners" :loading="isLoading" :size="25" />
+    <div class="movie-details__container" v-if="isLoading === false">
+      <figure class="movie-details__image-container">
+        <img
+          :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
+          alt=""
+        />
+      </figure>
+      <div class="movie-details__info">
+        <h1>{{ movie.title }}</h1>
+        <hr />
+        <ul>
+          <li>
+            Release date:
+            <span>{{ movie.release_date }}</span>
+          </li>
+          <li>
+            Average rating:
+            <span> {{ movie.vote_average }}</span>
+          </li>
+          <li>
+            Genres:
+            <span v-for="i in movie.genres" :key="i.id">{{ i.name }} </span>
+          </li>
+          <li>
+            Original language:
+            <span>{{ movie.original_language }}</span>
+          </li>
+          <li>
+            Duration:
+            <span> {{ movie.runtime }} min</span>
+          </li>
+        </ul>
+        <hr />
+        <p>
+          {{ movie.overview }}
+        </p>
+      </div>
+      <div class="movie-cast-list">
+        <h3>Actors</h3>
+        <ActorsView :actors="cast" />
+      </div>
+      <div class="movie-related" v-if="similarMovies">
+        <h3>More like this</h3>
         <MovieContainer :movies="similarMovies" />
       </div>
-    </div>
-    <div class="movie-reviews">
-      <h3>What people thinks</h3>
-      <div v-for="i in filteredReviews" :key="i.id">
-        <h3>{{ i.author }}</h3>
-        <p>{{ i.content }}</p>
+      <div class="movie-reviews">
+        <h3>What people thinks</h3>
+        <div v-for="i in filteredReviews" :key="i.id">
+          <h3>{{ i.author }}</h3>
+          <p>{{ i.content }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -69,7 +70,8 @@ export default {
       movie: [],
       cast: {},
       similarMovies: [],
-      reviews: []
+      reviews: [],
+      isLoading: false
     };
   },
   created() {
@@ -98,18 +100,21 @@ export default {
 
   methods: {
     getData() {
+      this.isLoading = true;
       const id = this.$route.params.id;
       Promise.all([
         api.getDetail(id),
         api.getCredits(id),
         api.getSimilarMovies(id),
         api.getReviews(id)
-      ]).then(([detail, credits, similarMovies, reviews]) => {
-        this.movie = detail;
-        this.cast = credits;
-        this.similarMovies = similarMovies;
-        this.reviews = reviews;
-      });
+      ])
+        .then(([detail, credits, similarMovies, reviews]) => {
+          this.movie = detail;
+          this.cast = credits;
+          this.similarMovies = similarMovies;
+          this.reviews = reviews;
+        })
+        .finally(() => (this.isLoading = false));
     }
   }
 };
@@ -199,5 +204,12 @@ export default {
 
 .movie-reviews {
   grid-area: reviews;
+}
+
+.spinners {
+  height: calc(100vh - 160px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
